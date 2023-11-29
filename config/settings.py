@@ -30,6 +30,33 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        'django.server': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+    },
+}
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
